@@ -4,9 +4,15 @@ import navIcon1 from '../assets/img/linkedin.svg';
 import navIcon3 from '../assets/img/envelope-regular.svg';
 import navIcon2 from '../assets/img/github.svg';
 import { HashLink } from 'react-router-hash-link';
-import {
-  BrowserRouter as Router
-} from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+import Header from './Header';
+
+<Router>
+  <Routes>
+    <Route path="/" element={<Header />} />
+  </Routes>
+</Router>
+
 
 export const NavBar = () => {
 
