@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import navIcon1 from "../assets/img/linkedin.svg";
 import navIcon3 from "../assets/img/envelope-regular.svg";
@@ -8,6 +8,9 @@ import { HashLink } from "react-router-hash-link";
 export const NavBar = () => {
   const [activeLink, setActiveLink] = useState("home");
   const [scrolled, setScrolled] = useState(false);
+  const [isNavOpen, setIsNavOpen] = useState(false); // Track if the nav is open
+
+  const navbarRef = useRef(null); // To handle click outside
 
   useEffect(() => {
     const onScroll = () => {
@@ -20,24 +23,46 @@ export const NavBar = () => {
 
     window.addEventListener("scroll", onScroll);
 
-    return () => window.removeEventListener("scroll", onScroll);
+    // Close the navbar when clicking outside
+    const handleClickOutside = (event) => {
+      if (navbarRef.current && !navbarRef.current.contains(event.target)) {
+        setIsNavOpen(false);
+      }
+    };
+    
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      document.removeEventListener("click", handleClickOutside);
+    };
   }, []);
 
   const onUpdateActiveLink = (value) => {
     setActiveLink(value);
+    setIsNavOpen(false); // Close the navbar when a link is clicked
+  };
+
+  const handleLetConnectClick = () => {
+    setIsNavOpen(false); // Close the navbar when "Let's Connect" is clicked
   };
 
   return (
     <Navbar
       expand="md"
-      fixed="top" // Ensure the navbar stays at the top
+      fixed="top"
       className={`navbar ${scrolled ? "scrolled" : ""}`}
+      ref={navbarRef}
     >
       <Container>
-        <Navbar.Toggle aria-controls="basic-navbar-nav">
+        <Navbar.Toggle
+          aria-controls="basic-navbar-nav"
+          onClick={() => setIsNavOpen(!isNavOpen)} // Toggle navbar open state
+        >
           <span className="navbar-toggler-icon"></span>
         </Navbar.Toggle>
-        <Navbar.Collapse id="basic-navbar-nav">
+
+        <Navbar.Collapse id="basic-navbar-nav" in={isNavOpen}>
           <Nav className="me-auto">
             <Nav.Link
               href="#home"
@@ -61,7 +86,7 @@ export const NavBar = () => {
               Projects
             </Nav.Link>
           </Nav>
-          <span className="navbar-text d-flex align-items-center gap-2">
+          <span className="navbar-text d-flex align-items-center gap-2 flex-column flex-md-row justify-content-md-end">
             <div className="social-icon d-flex gap-2">
               <a href="https://www.linkedin.com/in/aryasinha" target="_blank" rel="noopener noreferrer">
                 <img src={navIcon1} alt="LinkedIn" />
@@ -73,7 +98,7 @@ export const NavBar = () => {
                 <img src={navIcon3} alt="Email" />
               </a>
             </div>
-            <HashLink to="#connect">
+            <HashLink to="#connect" onClick={handleLetConnectClick}>
               <button className="vvd">
                 <span>Let’s Connect</span>
               </button>
@@ -81,6 +106,7 @@ export const NavBar = () => {
           </span>
         </Navbar.Collapse>
       </Container>
+
       <style>
         {`
           .navbar {
@@ -105,6 +131,11 @@ export const NavBar = () => {
           .social-icon img {
             width: 20px;
             height: 20px;
+            filter: brightness(0) invert(1); /* White by default */
+            transition: filter 0.3s ease; /* Smooth transition */
+          }
+          .social-icon img:hover {
+            filter: brightness(0) invert(0.5); /* Grey when hovered */
           }
           .vvd {
             border: 2px solid rgb(231, 242, 244);
@@ -126,18 +157,25 @@ export const NavBar = () => {
               padding: 0.5rem 0.5rem;
             }
             .navbar-collapse {
-              background-color: rgba(0, 0, 0, 0.9); /* Ensure menu is visible */
+              background-color: rgba(0, 0, 0, 0.9);
               padding: 1rem;
               position: relative;
-              z-index: 10; /* Prevent overlap */
+              z-index: 10;
             }
             .navbar-collapse.show {
               display: block;
-              margin-bottom: 1rem; /* Adds spacing below */
+              margin-bottom: 1rem;
             }
             .navbar-link {
-              display: block; /* Stack links vertically */
+              display: block;
               margin-bottom: 0.5rem;
+            }
+            .navbar-text {
+              flex-direction: column; /* Align text items vertically */
+              margin-left: 0;
+            }
+            .social-icon {
+              margin-bottom: 1rem; /* Space between icons and Let's Connect button */
             }
           }
         `}
