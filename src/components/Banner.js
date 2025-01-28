@@ -86,7 +86,7 @@ export const Banner = () => {
                     I am a software developer with a strong foundation in
                     creating innovative, scalable, and reliable applications.
                     With over 4 years of experience, I have developed and
-                    maintained various tools and solutions that optimize
+                    maintained various applications and solutions that optimize
                     processes, enhance user experience, and provide actionable
                     insights.
                   </p>

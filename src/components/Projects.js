@@ -3,8 +3,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
-import 'animate.css';
-import TrackVisibility from 'react-on-screen';
+import "animate.css";
+import TrackVisibility from "react-on-screen";
 import bannerImg from "../assets/img/project-bg.png";
 
 export const Projects = () => {
@@ -24,7 +24,10 @@ export const Projects = () => {
       title: "WisdomNet",
       content: (
         <p>
-          A Knowledge-Sharing Portal designed to enable real-time collaboration within teams. Inspired by platforms like Stack Overflow, it fosters peer-to-peer support, encourages innovation, and accelerates technical issue resolution.
+          A Knowledge-Sharing Portal designed to enable real-time collaboration
+          within teams. Inspired by platforms like Stack Overflow, it fosters
+          peer-to-peer support, encourages innovation, and accelerates
+          technical issue resolution.
         </p>
       ),
     },
@@ -32,7 +35,10 @@ export const Projects = () => {
       title: "CodeFusion",
       content: (
         <p>
-          An AI-powered tool that centralizes and streamlines code management for cross-functional teams. It features advanced search, automated backups, and bulk upload capabilities to improve collaboration and reduce redundancy.
+          An AI-powered tool that centralizes and streamlines code management
+          for cross-functional teams. It features advanced search, automated
+          backups, and bulk upload capabilities to improve collaboration and
+          reduce redundancy.
         </p>
       ),
     },
@@ -40,7 +46,10 @@ export const Projects = () => {
       title: "PaySync",
       content: (
         <p>
-          An automated reconciliation tool designed to streamline validation of employee data from legacy systems to cloud platform. It ensures seamless payroll processing by reducing manual errors and enhancing efficiency.
+          An automated reconciliation tool designed to streamline validation of
+          employee data from legacy systems to cloud platform. It ensures
+          seamless payroll processing by reducing manual errors and enhancing
+          efficiency.
         </p>
       ),
     },
@@ -48,16 +57,14 @@ export const Projects = () => {
       title: "SkillSphere",
       content: (
         <p>
-          An Online Learning Management System (LMS) aimed at upskilling employees. It centralizes learning resources, tracks progress, and fosters continuous development through interactive and gamified features.
+          An Online Learning Management System (LMS) aimed at upskilling
+          employees. It centralizes learning resources, tracks progress, and
+          fosters continuous development through interactive and gamified
+          features.
         </p>
       ),
     },
   ];
-
-  const tabContent_Project1 = <p>A Knowledge-Sharing Portal designed to enable real-time collaboration within teams. Inspired by platforms like Stack Overflow, it fosters peer-to-peer support, encourages innovation, and accelerates technical issue resolution.</p>;
-  const tabContent_Project2 = <p>An AI-powered tool that centralizes and streamlines code management for cross-functional teams. It features advanced search, automated backups, and bulk upload capabilities to improve collaboration and reduce redundancy.</p>;
-  const tabContent_Project3 = <p>An automated reconciliation tool designed to streamline validation of employee data from legacy systems to cloud platform. It ensures seamless payroll processing by reducing manual errors and enhancing efficiency.</p>;
-  const tabContent_Project4 = <p>An Online Learning Management System (LMS) aimed at upskilling employees. It centralizes learning resources, tracks progress, and fosters continuous development through interactive and gamified features.</p>;
 
   // Slider settings
   const settings = {
@@ -70,28 +77,61 @@ export const Projects = () => {
     adaptiveHeight: true,
     autoplay: false,
     appendDots: (dots) => (
-      <div style={{ backgroundColor: "transparent", position: "absolute", bottom: "-30px", width: "100%" }}>
+      <div
+        style={{
+          backgroundColor: "transparent",
+          position: "absolute",
+          bottom: "-30px",
+          width: "100%",
+        }}
+      >
         <ul style={{ margin: 0, display: "flex", justifyContent: "center" }}>
           {dots}
         </ul>
       </div>
     ),
     customPaging: () => (
-      <div style={{ width: "10px", height: "10px", background: "#fff", borderRadius: "50%" }} />
+      <div
+        style={{
+          width: "10px",
+          height: "10px",
+          background: "#fff",
+          borderRadius: "50%",
+        }}
+      />
     ),
   };
 
   return (
-    <section className="project" id="projects" style={{ background: `url(${bannerImg}) no-repeat center center/cover`, padding: "50px 0", color: "white" }}>
+    <section
+      className="project"
+      id="projects"
+      style={{
+        background: `url(${bannerImg}) no-repeat center center/cover`,
+        padding: "50px 0",
+        color: "white",
+      }}
+    >
       <div style={{ width: "100vw", maxWidth: "100%", margin: "0", padding: "0" }}>
-        <h2 className="text-center mb-4" style={{ marginBottom: "2rem", fontSize: "2.5rem" }}>Projects</h2>
+        <h2 className="text-center mb-4" style={{ marginBottom: "2rem", fontSize: "2.5rem" }}>
+          Projects
+        </h2>
 
         {/* Conditionally render based on screen size */}
         {isMobile ? (
           <Slider {...settings}>
             {projects.map((project, index) => (
               <div key={index} style={{ textAlign: "center" }}>
-                <h3 style={{ fontSize: "1.6rem", fontWeight: "bold", marginBottom: "1rem" }}>{project.title}</h3>
+                <h3
+                  style={{
+                    fontSize: "1.6rem",
+                    fontWeight: "bold",
+                    marginBottom: "1rem",
+                    textAlign: "center", // Ensure the title is centered
+                  }}
+                >
+                  {project.title}
+                </h3>
                 <div style={{ fontSize: "1rem", padding: "0 2%", margin: "0 auto" }}>
                   {project.content}
                 </div>
@@ -107,16 +147,27 @@ export const Projects = () => {
                     <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
                       <Tab.Container id="projects-tabs" defaultActiveKey="first">
                         <Nav variant="pills" className="custom-nav mb-5" id="pills-tab">
-                          <Nav.Item><Nav.Link eventKey="first">WisdomNet</Nav.Link></Nav.Item>
-                          <Nav.Item><Nav.Link eventKey="second">CodeFusion</Nav.Link></Nav.Item>
-                          <Nav.Item><Nav.Link eventKey="third">PaySync</Nav.Link></Nav.Item>
-                          <Nav.Item><Nav.Link eventKey="fourth">SkillSphere</Nav.Link></Nav.Item>
+                          <Nav.Item>
+                            <Nav.Link eventKey="first">WisdomNet</Nav.Link>
+                          </Nav.Item>
+                          <Nav.Item>
+                            <Nav.Link eventKey="second">CodeFusion</Nav.Link>
+                          </Nav.Item>
+                          <Nav.Item>
+                            <Nav.Link eventKey="third">PaySync</Nav.Link>
+                          </Nav.Item>
+                          <Nav.Item>
+                            <Nav.Link eventKey="fourth">SkillSphere</Nav.Link>
+                          </Nav.Item>
                         </Nav>
-                        <Tab.Content id="slideInUp" className={isVisible ? "animate__animated animate__slideInUp" : ""}>
-                          <Tab.Pane eventKey="first">{tabContent_Project1}</Tab.Pane>
-                          <Tab.Pane eventKey="second">{tabContent_Project2}</Tab.Pane>
-                          <Tab.Pane eventKey="third">{tabContent_Project3}</Tab.Pane>
-                          <Tab.Pane eventKey="fourth">{tabContent_Project4}</Tab.Pane>
+                        <Tab.Content
+                          id="slideInUp"
+                          className={isVisible ? "animate__animated animate__slideInUp" : ""}
+                        >
+                          <Tab.Pane eventKey="first">{projects[0].content}</Tab.Pane>
+                          <Tab.Pane eventKey="second">{projects[1].content}</Tab.Pane>
+                          <Tab.Pane eventKey="third">{projects[2].content}</Tab.Pane>
+                          <Tab.Pane eventKey="fourth">{projects[3].content}</Tab.Pane>
                         </Tab.Content>
                       </Tab.Container>
                     </div>
@@ -176,21 +227,33 @@ export const Projects = () => {
             color: #333;
           }
 
+          .slick-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: auto; /* Dynamically adjust height */
+          }
+
+          .slick-slide div {
+            margin: 0 auto;
+            padding: 0; /* Remove padding for better alignment */
+            width: 90%;
+          }
+
           @media (max-width: 768px) {
-            .custom-nav {
-              display: none; /* Hide tabs on mobile */
-            }
-            .slick-slide {
-              text-align: center; /* Ensure content is centered on mobile */
-            }
             h3 {
-              font-size: 1.6rem !important; /* Smaller font size for project title on mobile */
+              font-size: 1.4rem !important;
+              text-align: center; /* Ensure the title is centered */
             }
             p {
-              font-size: 0.75rem !important; /* Smaller font size for project description on mobile */
+              font-size: 0.9rem !important;
+              line-height: 1.4;
             }
             .slick-slide div {
-              padding: 0 0.2% !important; /* Reduced padding on mobile */
+              padding: 0 !important;
+            }
+            section.project {
+              padding: 30px 0;
             }
           }
         `}
