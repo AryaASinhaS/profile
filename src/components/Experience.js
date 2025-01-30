@@ -122,7 +122,7 @@ export const Experience = () => {
                         role="tablist"
                       >
                         {experiences.map((experience, index) => (
-                          <Nav.Item key={index}>
+                          <Nav.Item key={index} className="nav-item-with-divider">
                             <Nav.Link eventKey={index.toString()} aria-controls={`experience${index}-tab`}>
                               {experience.title}
                             </Nav.Link>
@@ -178,6 +178,11 @@ export const Experience = () => {
             white-space: normal;
           }
 
+          /* Add divider between tabs */
+          .nav-item-with-divider:not(:last-child) {
+            border-right: 1px solid #ccc; /* Adjust color and thickness as needed */
+          }
+
           @media (max-width: 768px) {
             .experience-header {
               font-size: 6vw; /* Dynamically reduce font size for mobile */
@@ -191,6 +196,11 @@ export const Experience = () => {
             .experience-content {
               font-size: 0.9rem;
               padding: 0 5%;
+            }
+
+            /* Remove divider for mobile */
+            .nav-item-with-divider:not(:last-child) {
+              border-right: none;
             }
           }
         `}
