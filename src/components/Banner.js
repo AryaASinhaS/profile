@@ -4,7 +4,7 @@ import headerImg from "../assets/img/header.svg";
 import { ArrowRightCircle } from "react-bootstrap-icons";
 import "animate.css";
 import TrackVisibility from "react-on-screen";
-import resume from '../assets/files/Arya Sinha_Resume.pdf';
+import resume from "../assets/files/Arya Sinha_Resume.pdf";
 
 export const Banner = () => {
   const handleDownloadResume = () => {
@@ -65,12 +65,10 @@ export const Banner = () => {
     <section className="banner" id="home">
       <Container>
         <Row className="align-items-center">
-          <Col xs={12} md={6} xl={7} className="text-center text-md-start">
+          <Col xs={12} md={6} xl={7} className="text-container">
             <TrackVisibility>
               {({ isVisible }) => (
-                <div
-                  className={isVisible ? "animate__animated animate__fadeIn" : ""}
-                >
+                <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
                   <span className="tagline">Welcome to my Portfolio</span>
                   <h1>
                     {`Hi! I'm Arya, `}
@@ -90,29 +88,19 @@ export const Banner = () => {
                     processes, enhance user experience, and provide actionable
                     insights.
                   </p>
-                  <button
-                    className="resume-button"
-                    onClick={() => {
-                      handleDownloadResume();
-                    }}
-                  >
+                  <div className="btn-container">
+                    <button className="resume-button" onClick={handleDownloadResume}>
                     Download my resume <ArrowRightCircle size={25} />
-                  </button>
+                    </button>
+                  </div>
                 </div>
               )}
             </TrackVisibility>
           </Col>
-          <Col
-            xs={12}
-            md={6}
-            xl={5}
-            className="d-flex justify-content-center"
-          >
+          <Col xs={12} md={6} xl={5} className="d-flex justify-content-center">
             <TrackVisibility>
               {({ isVisible }) => (
-                <div
-                  className={isVisible ? "animate__animated animate__zoomIn" : ""}
-                >
+                <div className={isVisible ? "animate__animated animate__zoomIn" : ""}>
                   <img
                     src={headerImg}
                     alt="Header Img"
@@ -131,21 +119,65 @@ export const Banner = () => {
       <style>
         {`
           .banner {
-            padding: 50px 15px; /* Default padding for all devices */
+            padding: 50px 15px;
+          }
+
+          .text-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; 
+            text-align: left; 
           }
 
           .banner .tagline {
-            font-size: 1.2rem; /* Adjust tagline font size for smaller devices */
+            font-size: 1.2rem;
           }
 
           .banner h1 {
-            font-size: 2rem; /* Default headline size */
+            font-size: 2rem;
             word-wrap: break-word;
           }
 
           .banner p {
-            font-size: 1rem; /* Default paragraph font size */
+            color: #fff;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            max-width: 100%;
+            margin-bottom: 20px;
           }
+
+          
+          .text-container {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; 
+            text-align: left;
+            padding-left: 0;
+            margin-left: -20px; 
+          }
+          
+          .btn-container {
+            display: flex;
+            justify-content: flex-start; 
+            width: 100%;
+            margin-left: -20px;
+          }
+          
+          /* Center content on mobile */
+          @media (max-width: 768px) {
+            .text-container {
+              align-items: center; 
+              text-align: center;
+              margin-left: 0; 
+              padding-left: 0;
+            }
+          
+            .btn-container {
+              justify-content: center; 
+              margin-left: 0;
+            }
+          }
+          
 
           .resume-button {
             font-size: 0.9rem;
@@ -153,13 +185,22 @@ export const Banner = () => {
           }
 
           @media (max-width: 768px) {
+            .text-container {
+              align-items: center;
+              text-align: center;
+            }
+
+            .btn-container {
+              justify-content: center;
+            }
+
             .banner h1 {
-              font-size: 1.8rem; /* Reduce headline size for smaller screens */
+              font-size: 1.8rem;
             }
 
             .banner p {
-              font-size: 0.9rem;
-              margin-bottom: 20px;
+              font-size: 1.6rem;
+              margin-bottom: 25px;
             }
 
             .banner .tagline {
@@ -173,8 +214,21 @@ export const Banner = () => {
           }
 
           @media (min-width: 992px) {
+            .text-container {
+              align-items: flex-start;
+              text-align: left;
+            }
+
+            .btn-container {
+              justify-content: flex-start;
+            }
+
             .banner {
-              padding-top: 100px; /* Increase space above banner for laptops */
+              padding-top: 100px;
+            }
+
+            .banner p {
+              font-size: 1.3rem;
             }
           }
         `}
