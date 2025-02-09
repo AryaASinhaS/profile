@@ -1,5 +1,6 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { HashRouter } from "react-router-dom";
 import { NavBar } from "./components/NavBar";
 import { Banner } from "./components/Banner";
 import { Projects } from "./components/Projects";
@@ -10,6 +11,7 @@ import { Experience } from "./components/Experience";
 
 function App() {
   return (
+    <HashRouter>
     <div className="App">
       <NavBar />
       <Banner />
@@ -18,6 +20,7 @@ function App() {
       <Contact />
       <Footer />
     </div>
+    </HashRouter>
   );
 }
 
