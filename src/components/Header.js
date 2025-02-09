@@ -1,52 +1,98 @@
 import React from 'react';
-import styled from 'styled-components';
+import { Container, Row, Col } from 'react-bootstrap';
 import { FaUser, FaProjectDiagram, FaEnvelope } from 'react-icons/fa';
-
-const HeaderWrapper = styled.header`
-  background: linear-gradient(90deg, #ff7e5f, #feb47b);
-  padding: 1rem 2rem;
-  color: white;
-  text-align: center;
-
-  h1 {
-    font-size: 2.5rem;
-    margin: 0;
-  }
-`;
-
-const Nav = styled.nav`
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin-top: 1rem;
-
-  a {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1.2rem;
-    transition: transform 0.3s;
-
-    &:hover {
-      transform: scale(1.1);
-    }
-
-    svg {
-      margin-right: 0.5rem;
-    }
-  }
-`;
 
 const Header = () => {
   return (
-    <HeaderWrapper>
-      <h1>Arya Sinha</h1>
-      <Nav>
-        <a href="#about"><FaUser /> About</a>
-        <a href="#projects"><FaProjectDiagram /> Projects</a>
-        <a href="#contact"><FaEnvelope /> Contact</a>
-      </Nav>
-    </HeaderWrapper>
+    <header
+      style={{
+        background: 'linear-gradient(90deg, #ff7e5f, #feb47b)',
+        color: 'white',
+        padding: '1.5rem 0',
+        textAlign: 'center',
+      }}
+    >
+      <Container>
+        <Row>
+          <Col>
+            <h1 style={{ fontSize: '2.5rem', margin: '0' }}>Arya Sinha</h1>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <nav
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                gap: '1.5rem',
+                marginTop: '1rem',
+                flexWrap: 'wrap', // Ensures proper wrapping on smaller screens
+              }}
+            >
+              <a
+                href="#about"
+                style={{
+                  color: 'white',
+                  textDecoration: 'none',
+                  fontWeight: '600',
+                  fontSize: '1.2rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  transition: 'transform 0.3s',
+                }}
+              >
+                <FaUser style={{ marginRight: '0.5rem' }} /> About
+              </a>
+              <a
+                href="#projects"
+                style={{
+                  color: 'white',
+                  textDecoration: 'none',
+                  fontWeight: '600',
+                  fontSize: '1.2rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  transition: 'transform 0.3s',
+                }}
+              >
+                <FaProjectDiagram style={{ marginRight: '0.5rem' }} /> Projects
+              </a>
+              <a
+                href="#contact"
+                style={{
+                  color: 'white',
+                  textDecoration: 'none',
+                  fontWeight: '600',
+                  fontSize: '1.2rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  transition: 'transform 0.3s',
+                }}
+              >
+                <FaEnvelope style={{ marginRight: '0.5rem' }} /> Contact
+              </a>
+            </nav>
+          </Col>
+        </Row>
+      </Container>
+      <style>
+        {`
+          a:hover {
+            transform: scale(1.1);
+          }
+
+          @media (max-width: 576px) {
+            h1 {
+              font-size: 2rem; /* Smaller font size for mobile screens */
+            }
+
+            a {
+              font-size: 1rem; /* Adjust font size for smaller screens */
+            }
+          }
+        `}
+      </style>
+    </header>
   );
 };
 
