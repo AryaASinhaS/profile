@@ -4,7 +4,7 @@ import headerImg from "../assets/img/header.svg";
 import { ArrowRightCircle } from "react-bootstrap-icons";
 import "animate.css";
 import TrackVisibility from "react-on-screen";
-import resume from "../assets/static/media/Arya Sinha_Resume.pdf";
+import resume from "../../static/media/Arya Sinha_Resume.pdf";
 
 export const Banner = () => {
   const handleDownloadResume = () => {
