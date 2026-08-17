@@ -8,7 +8,7 @@ import TrackVisibility from "react-on-screen";
 export const Banner = () => {
   const handleDownloadResume = () => {
     const link = document.createElement("a");
-    link.href = process.env.PUBLIC_URL + "/Arya_Sinha_Resume.pdf";;
+    link.href = "./Arya_Sinha_Resume.pdf";
     link.download = "Arya_Sinha_Resume.pdf";
     document.body.appendChild(link);
     link.click();
