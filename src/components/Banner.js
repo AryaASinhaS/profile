@@ -4,12 +4,11 @@ import headerImg from "../assets/img/header.svg";
 import { ArrowRightCircle } from "react-bootstrap-icons";
 import "animate.css";
 import TrackVisibility from "react-on-screen";
-import resume from "../static/media/Arya Sinha_Resume.pdf";
 
 export const Banner = () => {
   const handleDownloadResume = () => {
     const link = document.createElement("a");
-    link.href = resume;
+    link.href = process.env.PUBLIC_URL + "/Arya Sinha_Resume.pdf";;
     link.download = "Arya_Sinha_Resume.pdf";
     document.body.appendChild(link);
     link.click();
